@@ -26,7 +26,7 @@ const calculateDistance = (lat1, lon1, lat2, lon2) => {
 };
 
 // POST to find nearest live hospitals
-app.post('/nearest', async (req, res) => {
+app.post(['/nearest', '/api/nearest'], async (req, res) => {
     const { lat, lng } = req.body;
 
     if (!lat || !lng) {
