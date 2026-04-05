@@ -14,7 +14,7 @@ import {
 } from 'lucide-react';
 import MapComponent from './MapComponent';
 
-const API_URL = import.meta.env.PROD ? '/api' : 'http://localhost:5000/api';
+const API_URL = import.meta.env.PROD ? '/_backend' : 'http://localhost:5000/_backend';
 
 function App() {
   const [userLocation, setUserLocation] = useState(null);
