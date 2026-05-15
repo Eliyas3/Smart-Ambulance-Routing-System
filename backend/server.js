@@ -46,8 +46,13 @@ app.post(['/nearest', '/_backend/nearest'], async (req, res) => {
             out center;
         `;
 
-        const response = await axios.post('https://overpass-api.de/api/interpreter', overpassQuery, {
-            headers: { 'Content-Type': 'text/plain' }
+        const encodedQuery = `data=${encodeURIComponent(overpassQuery)}`;
+        const response = await axios.post('https://overpass-api.de/api/interpreter', encodedQuery, {
+            headers: { 
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'User-Agent': 'SmartAmbulanceRoutingApp/1.0',
+                'Accept': 'application/json'
+            }
         });
 
         const elements = response.data.elements || [];
